@@ -1,11 +1,73 @@
 "use client";
 import Hero from "@/components/Hero";
+import { IconBrandGithub, IconBrandX, IconExchange, IconHome, IconNewSection, IconTerminal2 } from "@tabler/icons-react";
+import { FloatingDock } from "@/components/ui/floating-dock";
+import Grid from "@/components/Grid";
 
 export default function Home() {
   return (
     <main className="realtive bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 ">
       <div className="max-w-7xl w-full">
+        <FloatingDock
+          items={[{
+            title: "Home",
+            icon: (
+              <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+            ),
+            href: "#",
+          },
+       
+          {
+            title: "Products",
+            icon: (
+              <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+            ),
+            href: "#",
+          },
+          {
+            title: "Components",
+            icon: (
+              <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+            ),
+            href: "#",
+          },
+          // {
+          //   title: "Aceternity UI",
+          //   icon: (
+          //     <Image
+          //       src="https://assets.aceternity.com/logo-dark.png"
+          //       width={20}
+          //       height={20}
+          //       alt="Aceternity Logo"
+          //     />
+          //   ),
+          //   href: "#",
+          // },
+          {
+            title: "Changelog",
+            icon: (
+              <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+            ),
+            href: "#",
+          },
+       
+          {
+            title: "Twitter",
+            icon: (
+              <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+            ),
+            href: "#",
+          },
+          {
+            title: "GitHub",
+            icon: (
+              <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+            ),
+            href: "#",
+          },]}
+        />
         <Hero/>
+        <Grid/>
       </div>
     </main>
   );

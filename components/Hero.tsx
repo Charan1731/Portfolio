@@ -1,6 +1,8 @@
 import React from 'react'
 import { Spotlight } from './ui/spotlight'
 import { TextGenerateEffect } from './ui/text-generate-effect'
+import MagicButton from './ui/MagicButton'
+import { GrConnect } from "react-icons/gr";
 
 const Hero = () => {
   return (
@@ -16,7 +18,7 @@ const Hero = () => {
             />
             <Spotlight
                 className='top-28 left-80 h-[80vh] w-[50vh]'
-                fill='blue'
+                fill='pink'
             />
         </div>
         <div className="h-screen w-full dark:bg-black-100 bg-white  dark:bg-grid-white/[0.05] bg-grid-black/[0.2] flex items-center justify-center absolute top-0 left-0">
@@ -29,7 +31,14 @@ const Hero = () => {
                         className='text-center text-[40px] md:text-5xl lg:text-6xl'
                         words='Transforming concepts into seamless experience'
                     />
-                    <p className='text-center md:tracking-wider mb-4 text-small md:text-large lg:text-2xl '>Hi, Im Charan, a Full-Stack developer</p>
+                    <p className='text-center md:tracking-wider mb-4 text-small md:text-large lg:text-2xl '>Hi, I'm Charan, a CS major student studying at CVR College of Engineering.</p>
+                    <a href="https://www.linkedin.com/in/charandeep-reddy-2640a4301/" target='_blank'>
+                        <MagicButton
+                            title="Let's Connect"
+                            otherClasses='mt-2'
+                            icon= <GrConnect className='hover:text-black-100'/>
+                        />
+                    </a>
                 </div>
             </div>
         </div>
