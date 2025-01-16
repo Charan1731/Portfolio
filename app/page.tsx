@@ -2,10 +2,9 @@
 import Hero from "@/components/Hero";
 import { IconBook, IconBrandGithub, IconBrandHackerrank, IconBrandInstagram, IconBrandVite, IconBrandX, IconCertificate2, IconExchange, IconHome, IconNewSection, IconTerminal2 } from "@tabler/icons-react";
 import Grid from "@/components/Grid";
-import { FloatingNav } from "@/components/ui/floating-navbar";
-import { navItems } from "@/data";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingDock } from "@/components/ui/floating-dock";
+import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
@@ -46,7 +45,7 @@ export default function Home() {
       icon: (
         <IconBrandHackerrank className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "#skills",
     },
     {
       title:"Eduaction",
@@ -61,7 +60,7 @@ export default function Home() {
       icon: (
         <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#",
+      href: "https://x.com/CharanR18433412",
     },
     {
       title:"Instagram",
@@ -81,6 +80,7 @@ export default function Home() {
         <Hero/>
         <Grid/>
         <RecentProjects/>
+        <Skills/>
       </div>
     </main>
   );
