@@ -8,7 +8,7 @@ export const navItems = [
   export const gridItems = [
     {
       id: 1,
-      title: "I prioritize client collaboration, fostering open communication ",
+      title: "I’m driven by a constant desire to learn, grow, and make a difference in the tech world.",
       description: "",
       className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
       imgClassName: "w-full h-full",
@@ -18,7 +18,7 @@ export const navItems = [
     },
     {
       id: 2,
-      title: "I'm very flexible with time zone communications",
+      title: "Passionate about solving problems with efficient solutions.",
       description: "",
       className: "lg:col-span-2 md:col-span-3 md:row-span-2",
       imgClassName: "",
@@ -28,8 +28,8 @@ export const navItems = [
     },
     {
       id: 3,
-      title: "My tech stack",
-      description: "I constantly try to improve",
+      title: "New Technologies",
+      description: "I'm currently learning",
       className: "lg:col-span-2 md:col-span-3 md:row-span-2",
       imgClassName: "",
       titleClassName: "justify-center",
@@ -49,7 +49,7 @@ export const navItems = [
   
     {
       id: 5,
-      title: "Currently building a JS Animation library",
+      title: "Currently building a Web 3.0-based blog platform",
       description: "The Inside Scoop",
       className: "md:col-span-3 md:row-span-2",
       imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -72,11 +72,11 @@ export const navItems = [
   export const projects = [
     {
       id: 1,
-      title: "3D Solar System Planets to Explore",
-      des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
+      title: "Web 3.0 based Blog Website",
+      des: "Explore the future of blogging with my decentralized Web 3.0 platform, built using React, TypeScript",
       img: "/p1.svg",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-      link: "/ui.earth.com",
+      link: "https://blippi-frontend.vercel.app/",
     },
     {
       id: 2,
