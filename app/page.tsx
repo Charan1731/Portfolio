@@ -5,6 +5,8 @@ import Grid from "@/components/Grid";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import Skills from "@/components/Skills";
+import Education from "@/components/Education";
+import Achievements from "@/components/Achievements";
 
 export default function Home() {
   return (
@@ -80,6 +82,8 @@ export default function Home() {
         <Hero/>
         <Grid/>
         <RecentProjects/>
+        <Achievements/>
+        <Education/>
         <Skills/>
       </div>
     </main>
