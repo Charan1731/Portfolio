@@ -1,10 +1,13 @@
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
-import Lottie from "react-lottie";
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./background-gradient-animation";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
+
+// Dynamically import Lottie
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
 export const BentoGrid = ({
   className,
@@ -76,7 +79,6 @@ export const BentoGridItem = ({
           "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
       }}
     >
-      {/* add img divs */}
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
         <div className="w-full h-full absolute">
           {img && (
@@ -88,8 +90,9 @@ export const BentoGridItem = ({
           )}
         </div>
         <div
-          className={`absolute right-0 -bottom-5 ${id === 5 && "w-full opacity-80"
-            } `}
+          className={`absolute right-0 -bottom-5 ${
+            id === 5 && "w-full opacity-80"
+          } `}
         >
           {spareImg && (
             <img
@@ -119,18 +122,19 @@ export const BentoGridItem = ({
           >
             {title}
           </div>
-          {id === 2 && <BackgroundGradientAnimation
-            gradientBackgroundStart="rgb(0,0,0)"
-            gradientBackgroundEnd="rgb(45,45,45)"
-            firstColor="64,64,64"
-            secondColor="112,112,112"
-            thirdColor="160,160,160"
-            fourthColor="220,220,220"
-            fifthColor="255,255,255"
-          />}
+          {id === 2 && (
+            <BackgroundGradientAnimation
+              gradientBackgroundStart="rgb(0,0,0)"
+              gradientBackgroundEnd="rgb(45,45,45)"
+              firstColor="64,64,64"
+              secondColor="112,112,112"
+              thirdColor="160,160,160"
+              fourthColor="220,220,220"
+              fifthColor="255,255,255"
+            />
+          )}
           {id === 3 && (
             <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-              {/* tech stack lists */}
               <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
                 {leftLists.map((item, i) => (
                   <span
@@ -160,8 +164,9 @@ export const BentoGridItem = ({
           {id === 6 && (
             <div className="mt-5 relative">
               <div
-                className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
-                  }`}
+                className={`absolute -bottom-5 right-0 ${
+                  copied ? "block" : "block"
+                }`}
               >
                 <Lottie options={defaultOptions} height={200} width={400} />
               </div>
