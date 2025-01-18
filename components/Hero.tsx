@@ -32,7 +32,7 @@ const Hero = () => {
                         className='text-center text-[40px] md:text-5xl lg:text-6xl'
                         words='Crafting Innovative Solutions, One Line of Code at a Time.'
                     />
-                    <p className='text-center md:tracking-wider mb-4 text-small md:text-large lg:text-2xl '>Hi, I'm Charan, a CS major student studying at CVR College of Engineering.</p>
+                    <p className='text-center md:tracking-wider mb-4 text-small md:text-large lg:text-2xl '>Hi, I&apos;m Charan, a CS major student studying at CVR College of Engineering.</p>
                     <a href="https://www.linkedin.com/in/charandeep-reddy-2640a4301/" target='_blank'>
                         <MagicButton
                             title="Let's Connect"

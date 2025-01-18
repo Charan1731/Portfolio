@@ -1,6 +1,5 @@
 import React from 'react'
 import { TextRevealCard, TextRevealCardTitle, TextRevealCardDescription } from './ui/text-reveal-card'
-import { Button } from './ui/moving-border'
 
 const Fun = () => {
   return (
