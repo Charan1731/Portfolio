@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export const navItems = [
     { name: "About", link: "#about" },
     { name: "Projects", link: "#projects" },
@@ -107,97 +109,106 @@ export const navItems = [
   export const testimonials = [
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Secured a funding of ₹2,00,000 from NewGen IDEC for a waste management startup idea focused on developing innovation solutions for efficient waste disposal and recycling.",
+      name: "NewGen IDEC",
+      img:"cvr.png" ,
+      title: "CVR College Of Engineering",
+    },
+    {
+      quote:"Secured 2nd among 20 top teams from various universities in a codeathon organised by BOSCH BGSW on the occasion of Engineer's Day",
+      name:"Codeathon",
+      img:"bosch.png",
+      title:"BOSCH, BGSW"
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Secured a funding of ₹2,00,000 from NewGen IDEC for a waste management startup idea focused on developing innovation solutions for efficient waste disposal and recycling.",
+      name: "NewGen IDEC",
+      img:"cvr.png" ,
+      title: "CVR College Of Engineering",
+    },
+    {
+      quote:"Secured 2nd among 20 top teams from various universities in a codeathon organised by BOSCH BGSW on the occasion of Engineer's Day",
+      name:"Codeathon",
+      img:"bosch.png",
+      title:"BOSCH, BGSW"
     },
     {
       quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+        "Secured a funding of ₹2,00,000 from NewGen IDEC for a waste management startup idea focused on developing innovation solutions for efficient waste disposal and recycling.",
+      name: "NewGen IDEC",
+      img:"cvr.png" ,
+      title: "CVR College Of Engineering",
     },
     {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
+      quote:"Secured 2nd among 20 top teams from various universities in a codeathon organised by BOSCH BGSW on the occasion of Engineer's Day",
+      name:"Codeathon",
+      img:"bosch.png",
+      title:"BOSCH, BGSW"
     },
   ];
   
   export const companies = [
     {
       id: 1,
-      name: "cloudinary",
-      img: "/cloud.svg",
-      nameImg: "/cloudName.svg",
+      name: "Google",
+      img: "/google.png",
+      nameImg: "/googleName.png",
     },
     {
       id: 2,
-      name: "appwrite",
+      name: "JP Morgan and chase",
       img: "/app.svg",
-      nameImg: "/appName.svg",
+      nameImg: "/jpmc.png",
     },
     {
       id: 3,
-      name: "HOSTINGER",
+      name: "Formula 1",
       img: "/host.svg",
-      nameImg: "/hostName.svg",
+      nameImg: "/f1.png",
     },
     {
       id: 4,
-      name: "stream",
+      name: "meta",
       img: "/s.svg",
-      nameImg: "/streamName.svg",
+      nameImg: "/meta.png",
     },
     {
       id: 5,
-      name: "docker.",
+      name: "Nvidia",
       img: "/dock.svg",
-      nameImg: "/dockerName.svg",
+      nameImg: "/nvidia.png",
     },
   ];
   
   export const workExperience = [
     {
       id: 1,
-      title: "Frontend Engineer Intern",
-      desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+      title: "CVR College of Engineering",
+      desc: `B-Tech in Computer Science`,
       className: "md:col-span-2",
-      thumbnail: "/exp1.svg",
+      thumbnail: "/cvr.png",
     },
     {
       id: 2,
-      title: "Mobile App Dev - JSM Tech",
-      desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+      title: "CVR College of Engineering",
+      desc: "Minor Degree in AIML",
       className: "md:col-span-2", // change to md:col-span-2
-      thumbnail: "/exp2.svg",
+      thumbnail: "/cvr.png",
     },
     {
       id: 3,
-      title: "Freelance App Dev Project",
-      desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+      title: "Fiitjee Junior College",
+      desc: "Intermediate",
       className: "md:col-span-2", // change to md:col-span-2
-      thumbnail: "/exp3.svg",
+      thumbnail: "/fiitjee.png",
     },
     {
       id: 4,
-      title: "Lead Frontend Developer",
-      desc: "Developed and maintained user-facing features using modern frontend technologies.",
+      title: "Johnson Grammar School",
+      desc: "Schooling",
       className: "md:col-span-2",
-      thumbnail: "/exp4.svg",
+      thumbnail: "/jgs.png",
     },
   ];
   
@@ -205,13 +216,16 @@ export const navItems = [
     {
       id: 1,
       img: "/git.svg",
+      url:"https://github.com/Charan1731",
     },
     {
       id: 2,
       img: "/twit.svg",
+      url:"https://x.com/CharanR18433412"
     },
     {
       id: 3,
       img: "/link.svg",
+      url:"",
     },
   ];

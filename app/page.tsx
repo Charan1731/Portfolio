@@ -7,6 +7,8 @@ import { FloatingDock } from "@/components/ui/floating-dock";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Achievements from "@/components/Achievements";
+import Fun from "@/components/Fun";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -83,8 +85,10 @@ export default function Home() {
         <Grid/>
         <RecentProjects/>
         <Achievements/>
-        <Education/>
         <Skills/>
+        <Education/>
+        <Fun/>
+        <Footer/>
       </div>
     </main>
   );

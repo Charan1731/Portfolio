@@ -102,7 +102,7 @@ const Skills = () => {
         id:17,
         name: "Github",
         designation: "Developer Tools",
-        image: "github.png",
+        image: "git.svg",
       },
       {
         id:18,
@@ -129,7 +129,7 @@ const Skills = () => {
             Techincal {' '}
             <span className='text-purple'>Skills</span>
         </h1>
-        <div className='flex flex-row flex-wrap justify-center gap-24 mt-10'>
+        <div className='flex flex-row flex-wrap justify-center gap-24 mt-20'>
             <AnimatedTooltip items={languages} />
         </div>
     </div>
