@@ -5,7 +5,6 @@ import MagicButton from './ui/MagicButton'
 import { GrConnect } from "react-icons/gr";
 
 const Hero = () => {
-    const words = ["Solutions", "Strategies", "Techniques", "Algorithms"]
   return (
     <div className='pb-20 pt-36'>
         <div>

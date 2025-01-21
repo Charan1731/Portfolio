@@ -7,9 +7,9 @@ import Image from 'next/image'
 const Footer = () => {
   return (
     <footer className='w-full pt-10 pb-10' id='contact'>
-         <div className='w-full absolute left-0 -bottom-72 min-h-96'>
+         {/* <div className='w-full absolute left-0 -bottom-72 min-h-96'>
             <Image src="/footer-grid.svg" alt="grid"  className='w-full opacity-90' width={50} height={50}/>
-         </div>
+         </div> */}
          <div className='flex flex-col items-center'>
             <h1 className='heading lg:max-w-[45vw]'>Ready to take
                 <span className='text-purple'> your </span> outside digital presence to next level
