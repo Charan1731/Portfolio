@@ -70,7 +70,7 @@ export default function Home() {
       icon: (
         <IconBrandInstagram className="w-full h-full text-neutral-500 dark:text-neutral-300"/>
       ),
-      href: "#"
+      href: "https://www.instagram.com/__.charan.__1731"
     },
     {
       title: "GitHub",

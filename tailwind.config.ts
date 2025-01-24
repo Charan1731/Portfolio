@@ -26,6 +26,7 @@ const config = {
       },
     },
     extend: {
+      backdropFilter: ['hover', 'focus'],
       colors: {
         black: {
           DEFAULT: "#000",

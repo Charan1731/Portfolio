@@ -226,6 +226,6 @@ export const navItems = [
     {
       id: 3,
       img: "/link.svg",
-      url:"",
+      url:"https://www.linkedin.com/in/charandeep-reddy-2640a4301/",
     },
   ];
