@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -7,7 +7,6 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function Button({
@@ -22,17 +21,18 @@ export function Button({
 }: {
   borderRadius?: string;
   children: React.ReactNode;
-  as?: any;
+  as?: React.ElementType; // Using ElementType instead of any
   containerClassName?: string;
   borderClassName?: string;
   duration?: number;
   className?: string;
-  [key: string]: any;
+  // Specifying more specific type for otherProps as HTMLProps
+  // React.ElementType allows any valid element type (component, div, button, etc.)
+  otherProps?: React.HTMLProps<HTMLElement>;
 }) {
   return (
     <Component
       className={cn(
-        // remove h-16 w-40, add  md:col-span-2
         "bg-transparent relative text-xl p-[1px] overflow-hidden md:col-span-2 md:row-span-1",
         containerClassName
       )}
@@ -81,10 +81,11 @@ export const MovingBorder = ({
   duration?: number;
   rx?: string;
   ry?: string;
-  [key: string]: any;
+  // Specifying more specific type for otherProps as SVGProps for SVG elements
+  otherProps?: React.SVGProps<SVGSVGElement>;
 }) => {
-  const pathRef = useRef<any>();
-  const progress = useMotionValue<number>(0);
+  const pathRef = useRef<SVGRectElement | null>(null); // Specify the type of the ref
+  const progress = useMotionValue<number>(0); // Specify the type of progress
 
   useAnimationFrame((time) => {
     const length = pathRef.current?.getTotalLength();
@@ -113,7 +114,7 @@ export const MovingBorder = ({
         className="absolute h-full w-full"
         width="100%"
         height="100%"
-        {...otherProps}
+        {...otherProps} // otherProps now typed as SVGProps
       >
         <rect
           fill="none"
