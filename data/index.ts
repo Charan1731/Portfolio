@@ -109,8 +109,8 @@ export const navItems = [
   export const testimonials = [
     {
       quote:
-        "Secured a funding of ₹2,00,000 from NewGen IDEC for a waste management startup idea focused on developing innovation solutions for efficient waste disposal and recycling.",
-      name: "NewGen IDEC",
+        "Secured a funding of ₹2,00,000 from NewGen IEDC for a waste management startup idea focused on developing innovation solutions for efficient waste disposal and recycling.",
+      name: "NewGen IEDC",
       img:"cvr.png" ,
       title: "CVR College Of Engineering",
     },
@@ -119,11 +119,17 @@ export const navItems = [
       name:"Codeathon",
       img:"bosch.png",
       title:"BOSCH, BGSW"
+    },{
+      quote:
+        "Achieved Top 5 position in the NASSCOM GenAI Hackathon among 250+ teams for developing an innovative AI-driven solution",
+      name: "Nasscom",
+      img:"cvr.png" ,
+      title: "CVR College Of Engineering",
     },
     {
       quote:
-        "Secured a funding of ₹2,00,000 from NewGen IDEC for a waste management startup idea focused on developing innovation solutions for efficient waste disposal and recycling.",
-      name: "NewGen IDEC",
+        "Secured a funding of ₹2,00,000 from NewGen IEDC for a waste management startup idea focused on developing innovation solutions for efficient waste disposal and recycling.",
+      name: "NewGen IEDC",
       img:"cvr.png" ,
       title: "CVR College Of Engineering",
     },
@@ -132,19 +138,12 @@ export const navItems = [
       name:"Codeathon",
       img:"bosch.png",
       title:"BOSCH, BGSW"
-    },
-    {
+    },{
       quote:
-        "Secured a funding of ₹2,00,000 from NewGen IDEC for a waste management startup idea focused on developing innovation solutions for efficient waste disposal and recycling.",
-      name: "NewGen IDEC",
+        "Achieved Top 5 position in the NASSCOM GenAI Hackathon among 250+ teams for developing an innovative AI-driven solution",
+      name: "Nasscom",
       img:"cvr.png" ,
       title: "CVR College Of Engineering",
-    },
-    {
-      quote:"Secured 2nd among 20 top teams from various universities in a codeathon organised by BOSCH BGSW on the occasion of Engineer's Day",
-      name:"Codeathon",
-      img:"bosch.png",
-      title:"BOSCH, BGSW"
     },
   ];
   

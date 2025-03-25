@@ -150,36 +150,46 @@ export const TextRevealCardDescription = ({
 const Stars = () => {
   const randomMove = () => Math.random() * 4 - 2;
   const randomOpacity = () => Math.random();
-  const random = () => Math.random();
+  
   return (
     <div className="absolute inset-0">
-      {[...Array(80)].map((_, i) => (
-        <motion.span
-          key={`star-${i}`}
-          animate={{
-            top: `calc(${random() * 100}% + ${randomMove()}px)`,
-            left: `calc(${random() * 100}% + ${randomMove()}px)`,
-            opacity: randomOpacity(),
-            scale: [1, 1.2, 0],
-          }}
-          transition={{
-            duration: random() * 10 + 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          style={{
-            position: "absolute",
-            top: `${random() * 100}%`,
-            left: `${random() * 100}%`,
-            width: `2px`,
-            height: `2px`,
-            backgroundColor: "white",
-            borderRadius: "50%",
-            zIndex: 1,
-          }}
-          className="inline-block"
-        ></motion.span>
-      ))}
+      {[...Array(80)].map((_, i) => {
+        // Deterministic initial positions based on index
+        const initialTop = (i % 10) * 10;
+        const initialLeft = Math.floor(i / 10) * 12.5;
+        
+        return (
+          <motion.span
+            key={`star-${i}`}
+            initial={{
+              top: `${initialTop}%`,
+              left: `${initialLeft}%`,
+              opacity: 0.5,
+              scale: 1,
+            }}
+            animate={{
+              top: [`${initialTop}%`, `${initialTop + randomMove()}%`],
+              left: [`${initialLeft}%`, `${initialLeft + randomMove()}%`],
+              opacity: [0.5, randomOpacity()],
+              scale: [1, 1.2, 0],
+            }}
+            transition={{
+              duration: 20 + (i % 10) * 2, // Deterministic but varied duration
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            style={{
+              position: "absolute",
+              width: "2px",
+              height: "2px",
+              backgroundColor: "white",
+              borderRadius: "50%",
+              zIndex: 1,
+            }}
+            className="inline-block"
+          />
+        );
+      })}
     </div>
   );
 };
