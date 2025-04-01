@@ -3,27 +3,39 @@ import React from 'react'
 import { Button } from './ui/moving-border'
 import Image from 'next/image'
 
-const Eduaction = () => {
+const Education = () => {
   return (
-    <div className='py-20' id='education'>
-        <h1 className='heading'>
-            My
-            <span className='text-purple'> Education</span>
-        </h1>
-        <div className='w-full mt-20 grid lg:grid-cols-4 grid-cols-1 gap-10'>
+    <div className='section-padding' id='education'>
+        <div className="text-center mb-16">
+            <span className="section-title-badge">ACADEMIC BACKGROUND</span>
+            <h1 className='heading'>
+                My
+                <span className='gradient-text'> Education</span>
+            </h1>
+            <p className="max-w-2xl mx-auto mt-4 text-gray-400">My academic journey and educational qualifications</p>
+        </div>
+        <div className='w-full mt-16 grid lg:grid-cols-4 grid-cols-1 gap-10'>
           {workExperience.map((card) => (
             <Button 
               key={card.id} 
               borderRadius='1.75rem' 
-              className='flex-1 text-white border-neutral-200 dark:border-slate-800' 
+              className='flex-1 text-white border-neutral-200 dark:border-slate-800 hover-scale' 
               duration={Math.floor(Math.random()*10000)+10000}>
-              <div className='flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2'>
-                <Image src={card.thumbnail} alt={card.thumbnail}  className='lg:w-32 md:w-20 w-16' width={50} height={50}/>
-                <div className='lg:ms-5'>
-                  <h1 className='text-start text-xl md:text-2xl font-bold'>
+              <div className='flex flex-col p-6 gap-4 min-h-[200px] justify-center'>
+                <div className="flex justify-center">
+                  <Image 
+                    src={card.thumbnail} 
+                    alt={card.thumbnail} 
+                    className='w-24 h-24 object-contain' 
+                    width={96} 
+                    height={96}
+                  />
+                </div>
+                <div className='mt-2 text-center'>
+                  <h1 className='text-xl md:text-2xl font-bold'>
                     {card.title}
                   </h1>
-                  <p className='text-start text-white-100 mt-3 font-semibold'>
+                  <p className='text-gray-300 mt-2 font-medium'>
                     {card.desc}
                   </p>
                 </div>
@@ -35,4 +47,4 @@ const Eduaction = () => {
   )
 }
 
-export default Eduaction
+export default Education

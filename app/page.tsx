@@ -9,6 +9,7 @@ import Education from "@/components/Education";
 import Achievements from "@/components/Achievements";
 import Fun from "@/components/Fun";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
@@ -51,7 +52,7 @@ export default function Home() {
       href: "#skills",
     },
     {
-      title:"Eduaction",
+      title:"Education",
       icon:(
         <IconBook />
       ),
@@ -88,6 +89,7 @@ export default function Home() {
         <Education/>
         <Fun/>
         <Footer/>
+        <ScrollToTop />
       </div>
     </main>
   );
