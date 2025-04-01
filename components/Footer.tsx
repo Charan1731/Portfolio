@@ -16,10 +16,10 @@ const Footer = () => {
             <h1 className='heading lg:max-w-[45vw]'>Ready to take
                 <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple to-blue-400'> your </span> digital presence to the next level
             </h1>
-            <p className='text-gray-400 md:mt-6 my-5 text-center max-w-xl'>Let's collaborate on your next project and create something amazing together</p>
+            <p className='text-gray-400 md:mt-6 my-5 text-center max-w-xl'>Let&apos;s collaborate on your next project and create something amazing together</p>
             <a href="mailto:charan23114@gmail.com" className="mt-4 transform hover:scale-105 transition-all duration-300">
                 <MagicButton
-                    title="Let's connect"
+                    title="Let&apos;s connect"
                     icon={<FaLocationArrow/>}
                 />
             </a>
