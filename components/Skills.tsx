@@ -68,17 +68,6 @@ const Skills = () => {
         name: "Tailwind CSS",
         designation: "Web Technology",
         image: "tailwind.png",
-      },{
-        id:12,
-        name: "Scikit-Learn",
-        designation: "Machine Learning Library",
-        image: "scikit.png",
-      },
-      {
-        id:13,
-        name: "Tensorflow",
-        designation: "Machine Learning Library",
-        image: "tensorflow.png",
       },
       {
         id:14,
