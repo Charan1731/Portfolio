@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const BackgroundGradientAnimation = ({
   gradientBackgroundStart = "rgb(108, 0, 162)",
@@ -34,11 +34,19 @@ export const BackgroundGradientAnimation = ({
   containerClassName?: string;
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
-
+  const animationFrameRef = useRef<number | null>(null);
+  
+  // Store all position values in refs to avoid dependency issues
+  const positionRef = useRef({
+    curX: 0,
+    curY: 0,
+    tgX: 0,
+    tgY: 0
+  });
+  
+  // Keep state for initial rendering
   const [curX, setCurX] = useState(0);
   const [curY, setCurY] = useState(0);
-  const [tgX, setTgX] = useState(0);
-  const [tgY, setTgY] = useState(0);
 
   useEffect(() => {
     document.body.style.setProperty(
@@ -70,27 +78,58 @@ export const BackgroundGradientAnimation = ({
     blendingValue,
   ]);
 
-  const move = useCallback(() => {
-    if (!interactiveRef.current) {
-      return;
-    }
-    setCurX((prev) => prev + (tgX - prev) / 20);
-    setCurY((prev) => prev + (tgY - prev) / 20);
-    interactiveRef.current.style.transform = `translate(${Math.round(
-      curX
-    )}px, ${Math.round(curY)}px)`;
-  }, [tgX, tgY, curX, curY]);
-
+  // Animation function using refs instead of state dependencies
   useEffect(() => {
-    move();
-  }, [move]);
+    if (!interactive) return;
+    
+    const moveAnimation = () => {
+      if (!interactiveRef.current) {
+        animationFrameRef.current = requestAnimationFrame(moveAnimation);
+        return;
+      }
+      
+      const { curX, curY, tgX, tgY } = positionRef.current;
+      
+      // Calculate new positions
+      const newX = curX + (tgX - curX) / 20;
+      const newY = curY + (tgY - curY) / 20;
+      
+      // Update ref
+      positionRef.current.curX = newX;
+      positionRef.current.curY = newY;
+      
+      // Update state occasionally for React's sake, but not essential for animation
+      setCurX(newX);
+      setCurY(newY);
+      
+      // Apply transform directly
+      interactiveRef.current.style.transform = `translate(${Math.round(newX)}px, ${Math.round(newY)}px)`;
+      
+      // Continue animation loop
+      animationFrameRef.current = requestAnimationFrame(moveAnimation);
+    };
+    
+    // Start animation
+    animationFrameRef.current = requestAnimationFrame(moveAnimation);
+    
+    // Cleanup on unmount
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [interactive]); // Only depend on interactive prop
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (interactiveRef.current) {
-      const rect = interactiveRef.current.getBoundingClientRect();
-      setTgX(event.clientX - rect.left);
-      setTgY(event.clientY - rect.top);
-    }
+    if (!interactiveRef.current) return;
+    
+    const rect = interactiveRef.current.getBoundingClientRect();
+    const newTgX = event.clientX - rect.left;
+    const newTgY = event.clientY - rect.top;
+    
+    // Update target position in ref
+    positionRef.current.tgX = newTgX;
+    positionRef.current.tgY = newTgY;
   };
 
   const [isSafari, setIsSafari] = useState(false);

@@ -10,6 +10,7 @@ import Achievements from "@/components/Achievements";
 import Fun from "@/components/Fun";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import SkillsWithLevels from "@/components/SkillsWithLevels";
 
 export default function Home() {
   return (
@@ -86,6 +87,7 @@ export default function Home() {
         <RecentProjects/>
         <Achievements/>
         <Skills/>
+        <SkillsWithLevels/>
         <Education/>
         <Fun/>
         <Footer/>
