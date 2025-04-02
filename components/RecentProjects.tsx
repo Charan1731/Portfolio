@@ -16,7 +16,7 @@ export default function RecentProjects() {
             <h1 className='heading'>
               A selection of {' '}
               <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple to-blue-400'>
-                <TextScramble text="recent projects" scrambleOnHover={true} />
+                <TextScramble text="recent projects" scrambleOnMount={true} />
               </span>
             </h1>
             <p className="max-w-2xl mx-auto mt-4 text-gray-400">Showcasing my latest work and development projects built with modern technologies</p>
@@ -80,7 +80,7 @@ export default function RecentProjects() {
                           whileHover={{ y: -5 }}
                           transition={{ type: 'spring', stiffness: 300 }}
                         >
-                          <Image src={icon} alt="icon" className='p-2' width={24} height={24} />
+                          <Image src={icon} alt="icon" className='p-2' width={50} height={50} />
                         </motion.div>
                       ))}
                     </div>

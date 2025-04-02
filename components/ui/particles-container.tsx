@@ -1,125 +1,177 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import React, { useRef, useEffect, useCallback } from 'react';
+import { cn } from '@/lib/utils';
 
-type Particle = {
+interface Particle {
   x: number;
   y: number;
   size: number;
-  speedX: number;
-  speedY: number;
   color: string;
-  opacity: number;
-};
+  vx: number;
+  vy: number;
+  alpha: number;
+}
 
 interface ParticlesContainerProps {
   className?: string;
-  quantity?: number;
-  stationary?: boolean;
+  count?: number;
   color?: string;
-  children?: React.ReactNode;
+  maxSize?: number;
+  minSize?: number;
+  speed?: number;
+  interactive?: boolean;
+  interactionDistance?: number;
+  interactionForce?: number;
+  randomOpacity?: boolean;
 }
 
 export const ParticlesContainer = ({
-  className,
-  quantity = 30,
-  stationary = false,
+  className = "",
+  count = 50,
   color = "#CBACF9",
-  children,
+  maxSize = 5,
+  minSize = 1,
+  speed = 1,
+  interactive = true,
+  interactionDistance = 100,
+  interactionForce = 1,
+  randomOpacity = false
 }: ParticlesContainerProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const particlesRef = useRef<Particle[]>([]);
-  const animationRef = useRef<number>(0);
+  const mouseRef = useRef({ x: 0, y: 0, isActive: false });
+  const animationRef = useRef<number | null>(null);
   
-  const updateDimensions = () => {
-    if (canvasRef.current && canvasRef.current.parentElement) {
-      const { width, height } = canvasRef.current.parentElement.getBoundingClientRect();
-      setDimensions({ width, height });
-      canvasRef.current.width = width;
-      canvasRef.current.height = height;
-    }
-  };
-
-  // Initialize particles
-  const initParticles = () => {
-    const particles: Particle[] = [];
-    for (let i = 0; i < quantity; i++) {
-      particles.push({
-        x: Math.random() * dimensions.width,
-        y: Math.random() * dimensions.height,
-        size: Math.random() * 2 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
-        color: color,
-        opacity: Math.random() * 0.5 + 0.1,
+  // Memoize initParticles to include in useEffect dependencies
+  const initParticles = useCallback(() => {
+    if (!canvasRef.current) return;
+    
+    const canvas = canvasRef.current;
+    const width = canvas.width;
+    const height = canvas.height;
+    
+    particlesRef.current = [];
+    
+    for (let i = 0; i < count; i++) {
+      particlesRef.current.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * (maxSize - minSize) + minSize,
+        color,
+        vx: (Math.random() - 0.5) * speed,
+        vy: (Math.random() - 0.5) * speed,
+        alpha: randomOpacity ? Math.random() * 0.5 + 0.5 : 1
       });
     }
-    particlesRef.current = particles;
-  };
-
-  // Animation loop
-  const animate = () => {
+  }, [count, maxSize, minSize, color, speed, randomOpacity]);
+  
+  // Memoize animate function to include in useEffect dependencies
+  const animate = useCallback(() => {
+    if (!canvasRef.current) return;
+    
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    
+    if (!ctx) return;
+    
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Update and draw particles
+    particlesRef.current.forEach(particle => {
+      // Update position
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      
+      // Mouse interaction if enabled
+      if (interactive && mouseRef.current.isActive) {
+        const dx = mouseRef.current.x - particle.x;
+        const dy = mouseRef.current.y - particle.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < interactionDistance) {
+          const forceFactor = (interactionDistance - distance) / interactionDistance;
+          particle.vx += dx * forceFactor * 0.01 * interactionForce;
+          particle.vy += dy * forceFactor * 0.01 * interactionForce;
+        }
+      }
+      
+      // Boundary check with bounce
+      if (particle.x < 0 || particle.x > canvas.width) {
+        particle.vx *= -1;
+      }
+      
+      if (particle.y < 0 || particle.y > canvas.height) {
+        particle.vy *= -1;
+      }
+      
+      // Draw particle
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      ctx.fillStyle = `${particle.color}${Math.round(particle.alpha * 255).toString(16).padStart(2, '0')}`;
+      ctx.fill();
+    });
+    
+    // Continue animation
+    animationRef.current = requestAnimationFrame(animate);
+  }, [interactive, interactionDistance, interactionForce]);
+  
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    
-    ctx.clearRect(0, 0, dimensions.width, dimensions.height);
-    
-    particlesRef.current.forEach((particle) => {
-      ctx.beginPath();
-      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-      ctx.fillStyle = `${particle.color}${Math.floor(particle.opacity * 255).toString(16).padStart(2, "0")}`;
-      ctx.fill();
+    // Set canvas size
+    const updateSize = () => {
+      if (!canvas) return;
       
-      if (!stationary) {
-        // Update position
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-        
-        // Boundary check with wraparound
-        if (particle.x < 0) particle.x = dimensions.width;
-        if (particle.x > dimensions.width) particle.x = 0;
-        if (particle.y < 0) particle.y = dimensions.height;
-        if (particle.y > dimensions.height) particle.y = 0;
-      }
-    });
-    
-    animationRef.current = requestAnimationFrame(animate);
-  };
-  
-  useEffect(() => {
-    updateDimensions();
-    
-    window.addEventListener("resize", updateDimensions);
-    
-    return () => {
-      window.removeEventListener("resize", updateDimensions);
-      cancelAnimationFrame(animationRef.current);
-    };
-  }, []);
-  
-  useEffect(() => {
-    if (dimensions.width > 0 && dimensions.height > 0) {
+      const { width, height } = canvas.getBoundingClientRect();
+      canvas.width = width;
+      canvas.height = height;
+      
+      // Reinitialize particles on resize
       initParticles();
-      animate();
-    }
-    
-    return () => {
-      cancelAnimationFrame(animationRef.current);
     };
-  }, [dimensions, quantity, stationary, color]);
+    
+    // Handle mouse movement
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!canvas) return;
+      
+      const rect = canvas.getBoundingClientRect();
+      mouseRef.current.x = e.clientX - rect.left;
+      mouseRef.current.y = e.clientY - rect.top;
+      mouseRef.current.isActive = true;
+    };
+    
+    const handleMouseLeave = () => {
+      mouseRef.current.isActive = false;
+    };
+    
+    // Initialize
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
+    
+    // Start animation
+    animationRef.current = requestAnimationFrame(animate);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', updateSize);
+      canvas.removeEventListener('mousemove', handleMouseMove);
+      canvas.removeEventListener('mouseleave', handleMouseLeave);
+      
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [animate, initParticles]); // Add memoized functions to dependencies
   
   return (
-    <div className={cn("relative w-full h-full", className)}>
-      <canvas
-        ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
-      />
-      <div className="relative z-10">{children}</div>
-    </div>
+    <canvas
+      ref={canvasRef}
+      className={cn("absolute inset-0 z-10", className)}
+    />
   );
 }; 

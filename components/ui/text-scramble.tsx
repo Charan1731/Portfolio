@@ -1,84 +1,88 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
-import { cn } from "@/lib/utils";
+import React, { useState, useEffect, useCallback } from 'react';
+import { cn } from '@/lib/utils';
 
 interface TextScrambleProps {
   text: string;
   className?: string;
   speed?: number;
-  scrambleOnHover?: boolean;
+  scrambleSpeed?: number;
+  delay?: number;
+  scrambleOnMount?: boolean;
+  iterationCount?: number;
+  chars?: string;
 }
 
 export const TextScramble = ({
   text,
-  className = "",
-  speed = 10,
-  scrambleOnHover = false,
+  className,
+  speed = 20,
+  scrambleSpeed = 10,
+  delay = 0,
+  scrambleOnMount = true,
+  iterationCount = 1,
+  chars = '!<>-_\\/[]{}—=+*^?#________'
 }: TextScrambleProps) => {
-  const [displayText, setDisplayText] = useState("");
-  const [isScrambling, setIsScrambling] = useState(false);
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const currentTextRef = useRef(text);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const randomChar = () => chars[Math.floor(Math.random() * chars.length)];
-
-  const scramble = () => {
+  const [displayText, setDisplayText] = useState('');
+  const scramble = useCallback(() => {
     let iteration = 0;
-    const maxIterations = text.length * 2;
+    let finalIndex = 0;
+    let timer: NodeJS.Timeout | null = null;
     
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
+    const randomChar = () => chars[Math.floor(Math.random() * chars.length)];
     
-    setIsScrambling(true);
+
+    if (timer) clearTimeout(timer);
     
-    intervalRef.current = setInterval(() => {
-      setDisplayText(prevText => {
-        return currentTextRef.current
-          .split("")
-          .map((char, index) => {
-            if (index < iteration / 2) {
-              return text[index];
-            }
-            
-            return randomChar();
-          })
-          .join("");
-      });
+    const doScramble = () => {
+
+      const scrambleText = text
+        .split('')
+        .map((char, index) => {
+          if (index < finalIndex) {
+            return text[index];
+          }
+          
+          if (char === ' ') return ' ';
+          return randomChar();
+        })
+        .join('');
       
-      iteration += 1;
+      setDisplayText(scrambleText);
       
-      if (iteration >= maxIterations) {
-        setIsScrambling(false);
+      if (finalIndex >= text.length && iteration >= iterationCount - 1) {
         setDisplayText(text);
-        if (intervalRef.current) {
-          clearInterval(intervalRef.current);
-        }
+        return;
       }
-    }, speed);
-  };
-  
-  useEffect(() => {
-    currentTextRef.current = text;
+      
+      if (iteration >= Math.floor(scrambleSpeed / 10)) {
+        iteration = 0;
+        finalIndex = Math.min(finalIndex + 1, text.length);
+      }
+      
+      iteration++;
+      
+      timer = setTimeout(doScramble, speed);
+    };
     
-    if (!scrambleOnHover) {
-      scramble();
-    }
+    setTimeout(doScramble, delay);
     
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+      if (timer) clearTimeout(timer);
     };
-  }, [text, scrambleOnHover]);
-  
+  }, [text, chars, speed, scrambleSpeed, delay, iterationCount]);
+
+  useEffect(() => {
+    if (scrambleOnMount) {
+      return scramble();
+    } else {
+      setDisplayText(text);
+    }
+  }, [text, scrambleOnMount, scramble]);
+
   return (
-    <span 
-      className={cn("inline-block", className)}
-      onMouseEnter={() => scrambleOnHover && scramble()}
-    >
+    <span className={cn("inline-block", className)}>
       {displayText || text}
     </span>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
@@ -19,73 +19,66 @@ interface MagneticButtonProps {
 export const MagneticButton = ({
   children,
   className = "",
-  strength = 25,
-  radius = 400,
+  strength = 30,
+  radius = 200,
   tolerance = 0.8,
-  scale = 1.1,
+  scale = 1.05,
   onClick,
   href,
   target
 }: MagneticButtonProps) => {
-  const buttonRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-  const [isPressed, setIsPressed] = useState(false);
+  const [hover, setHover] = useState(false);
+  const [pressed, setPressed] = useState(false);
   
-  // Handle mouse position
-  const handleMouseMove = (e: MouseEvent) => {
-    if (!buttonRef.current || !isHovered) return;
+  const buttonRef = useRef<HTMLDivElement>(null);
+  
+  // Memoize handleMouseMove to avoid recreation on each render
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (!buttonRef.current) return;
     
-    // Get button dimensions
     const rect = buttonRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
     
-    // Calculate distance from cursor to center of button
-    const x = e.clientX - (rect.left + rect.width / 2);
-    const y = e.clientY - (rect.top + rect.height / 2);
+    const distanceX = e.clientX - centerX;
+    const distanceY = e.clientY - centerY;
     
-    // Calculate distance from cursor to center
-    const distance = Math.sqrt(x * x + y * y);
+    const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
     
-    // Only move if cursor is within radius
-    if (distance < radius) {
-      // Scale the movement based on distance - closer means stronger pull
-      const distanceStrength = Math.max(0, 1 - distance / radius);
+    if (distance < radius * tolerance) {
+      // Scale the movement based on distance from center
+      const scaleFactor = 1 - distance / (radius * tolerance);
       
-      // Set position with the calculated strength
-      setPosition({
-        x: x * distanceStrength * tolerance * (isPressed ? 0.5 : 1),
-        y: y * distanceStrength * tolerance * (isPressed ? 0.5 : 1)
-      });
+      // Apply movement based on strength
+      const moveX = distanceX * scaleFactor * (strength / 10);
+      const moveY = distanceY * scaleFactor * (strength / 10);
+      
+      setPosition({ x: moveX, y: moveY });
     } else {
-      // Reset position if out of radius
+      // If outside radius, reset position
       setPosition({ x: 0, y: 0 });
     }
-  };
+  }, [radius, strength, tolerance]);
   
-  // Handle mouse entering button
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    setHover(true);
   };
   
-  // Handle mouse leaving button
   const handleMouseLeave = () => {
-    setIsHovered(false);
+    setHover(false);
     setPosition({ x: 0, y: 0 });
   };
   
-  // Handle mouse down
   const handleMouseDown = () => {
-    setIsPressed(true);
-    // Reduce the movement strength when pressed
-    setPosition(prev => ({ x: prev.x * 0.5, y: prev.y * 0.5 }));
+    setPressed(true);
   };
   
-  // Handle mouse up
-  const handleMouseUp = () => {
-    setIsPressed(false);
-  };
+  // Move handleMouseUp into useCallback
+  const handleMouseUp = useCallback(() => {
+    setPressed(false);
+  }, []);
   
-  // Set up event listeners
   useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
@@ -94,54 +87,37 @@ export const MagneticButton = ({
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isHovered, isPressed]);
+  }, [handleMouseMove, handleMouseUp]); // handleMouseUp is now memoized
   
-  // Create the component - wrap in a link if href is provided
-  const ButtonComponent = (
-    <motion.div
-      ref={buttonRef}
-      className={cn("inline-block cursor-pointer", className)}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseDown={handleMouseDown}
+  const Component = href ? 'a' : 'button';
+  
+  return (
+    <Component
+      href={href}
+      target={target}
       onClick={onClick}
-      animate={{
-        x: position.x / strength,
-        y: position.y / strength,
-        scale: isHovered ? scale : 1,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 300,
-        damping: 15,
-        mass: 0.5
-      }}
+      className={cn("inline-block", className)}
     >
       <motion.div
+        ref={buttonRef}
+        className="relative"
         animate={{
           x: position.x,
           y: position.y,
+          scale: hover ? (pressed ? 0.95 : scale) : 1
         }}
         transition={{
           type: "spring",
-          stiffness: 150,
-          damping: 15,
-          mass: 0.1
+          stiffness: 350,
+          damping: 20,
+          mass: 1
         }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onMouseDown={handleMouseDown}
       >
         {children}
       </motion.div>
-    </motion.div>
+    </Component>
   );
-  
-  // Return link if href is provided, otherwise return the button
-  if (href) {
-    return (
-      <a href={href} target={target} className="inline-block" style={{ lineHeight: 0 }}>
-        {ButtonComponent}
-      </a>
-    );
-  }
-  
-  return ButtonComponent;
 }; 

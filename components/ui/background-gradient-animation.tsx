@@ -44,9 +44,9 @@ export const BackgroundGradientAnimation = ({
     tgY: 0
   });
   
-  // Keep state for initial rendering
-  const [curX, setCurX] = useState(0);
-  const [curY, setCurY] = useState(0);
+  // Remove unused state variables
+  // const [curX, setCurX] = useState(0);
+  // const [curY, setCurY] = useState(0);
 
   useEffect(() => {
     document.body.style.setProperty(
@@ -98,9 +98,9 @@ export const BackgroundGradientAnimation = ({
       positionRef.current.curX = newX;
       positionRef.current.curY = newY;
       
-      // Update state occasionally for React's sake, but not essential for animation
-      setCurX(newX);
-      setCurY(newY);
+      // Remove state updates since we're using refs
+      // setCurX(newX);
+      // setCurY(newY);
       
       // Apply transform directly
       interactiveRef.current.style.transform = `translate(${Math.round(newX)}px, ${Math.round(newY)}px)`;

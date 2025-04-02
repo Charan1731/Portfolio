@@ -162,7 +162,7 @@ const SkillsWithLevels = () => {
       <div className="text-center mb-16 relative z-10">
         <span className="section-title-badge">PROFICIENCY</span>
         <h1 className='heading'>
-          <TextScramble text="Skill" scrambleOnHover={true} /> {' '}
+          <TextScramble text="Skill" scrambleOnMount={true} /> {' '}
           <span className='gradient-text'>Proficiency</span>
         </h1>
         <p className="max-w-2xl mx-auto mt-4 text-gray-400">

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 type ElementShape = 'circle' | 'square' | 'triangle' | 'custom';
@@ -52,7 +51,7 @@ export const FloatingElements = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const elementsRef = useRef<Element[]>([]);
   const mousePosition = useRef({ x: 0, y: 0 });
-  const animationFrameId = useRef<number>();
+  const animationFrameId = useRef<number | null>(null);
 
   // Convert size string to actual pixel value
   const getSizeValue = (size: ElementSize): number => {
@@ -114,7 +113,8 @@ export const FloatingElements = ({
     
     const animate = () => {
       elementsRef.current = elementsRef.current.map(element => {
-        let { x, y, speed, rotation, rotationSpeed } = element;
+        const { speed, rotationSpeed } = element;
+        let { x, y, rotation } = element;
         
         // Update position
         y += speed;
@@ -144,8 +144,7 @@ export const FloatingElements = ({
         return { ...element, x, y, rotation };
       });
       
-      // Force re-render
-      setForceRender(prev => prev + 1);
+      containerRef.current?.setAttribute('data-update', Date.now().toString());
       
       animationFrameId.current = requestAnimationFrame(animate);
     };
@@ -158,9 +157,6 @@ export const FloatingElements = ({
       }
     };
   }, [interactive]);
-  
-  // Force re-render on animation frame
-  const [forceRender, setForceRender] = React.useState<number>(0);
   
   // Render shape based on type
   const renderShape = (element: Element) => {

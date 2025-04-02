@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
@@ -28,7 +28,7 @@ interface PageTransitionProps {
   delayIn?: number;
   delayOut?: number;
   staggerChildren?: number;
-  customVariants?: any;
+  customVariants?: Variants;
   bgColor?: string;
   onAnimationComplete?: () => void;
 }
@@ -48,7 +48,11 @@ export const PageTransition = ({
   onAnimationComplete
 }: PageTransitionProps) => {
   const pathname = usePathname();
-  const [transitioning, setTransitioning] = useState(false);
+  
+  // Handle animation completion
+  const handleAnimationComplete = () => {
+    onAnimationComplete?.();
+  };
   
   // Animation variants for different transition types
   const getVariants = () => {
@@ -300,17 +304,6 @@ export const PageTransition = ({
         };
     }
   };
-  
-  // Handle animation completion
-  const handleAnimationComplete = () => {
-    setTransitioning(false);
-    onAnimationComplete?.();
-  };
-  
-  // Set transitioning state when pathname changes
-  useEffect(() => {
-    setTransitioning(true);
-  }, [pathname]);
 
   return (
     <AnimatePresence mode="wait">

@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { motion, useSpring, useScroll } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll } from 'framer-motion';
 
 interface ScrollIndicatorProps {
   color?: string;
   height?: number;
-  showPercentage?: boolean;
   smooth?: boolean;
   showIndicator?: boolean;
   customIndicator?: React.ReactNode;
@@ -14,8 +13,7 @@ interface ScrollIndicatorProps {
 
 export const ScrollIndicator = ({
   color = "#CBACF9",
-  height = 5,
-  showPercentage = true,
+  height = 4,
   smooth = true,
   showIndicator = true,
   customIndicator
@@ -23,54 +21,49 @@ export const ScrollIndicator = ({
   const [scrollPercentage, setScrollPercentage] = useState(0);
   const { scrollYProgress } = useScroll();
   
-  // Apply spring physics to smoothen the scroll progress
-  const scaleX = smooth 
-    ? useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 }) 
-    : scrollYProgress;
-  
+  // Always define spring configuration, but only use it when smooth is true
+  const springConfig = {
+    stiffness: 300,
+    damping: 30,
+    restDelta: 0.001
+  };
+
   useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', latest => {
-      // Update percentage display
-      setScrollPercentage(Math.round(latest * 100));
+    // Update scroll percentage when scrollYProgress changes
+    const unsubscribe = scrollYProgress.onChange((latest) => {
+      setScrollPercentage(Math.min(100, Math.round(latest * 100)));
     });
     
     return () => unsubscribe();
   }, [scrollYProgress]);
-  
+
   return (
-    <>
+    <div className="fixed top-0 left-0 w-full z-50 pointer-events-none">
       {/* Main progress bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 z-50 origin-left"
-        style={{ 
-          height, 
+        className="origin-left"
+        style={{
+          height,
           backgroundColor: color,
-          scaleX 
+          scaleX: smooth ? undefined : scrollYProgress,
+          width: '100%',
+          transformOrigin: 'left',
+          ...(smooth && { scaleX: scrollYProgress })
         }}
+        transition={smooth ? springConfig : undefined}
       />
       
-      {/* Visual scroll indicator */}
+      {/* Optional visual indicator */}
       {showIndicator && (
-        <motion.div
-          className="fixed top-[7px] z-50 flex items-center justify-center"
-          style={{ 
-            left: `calc(${scrollPercentage}% - 15px)`,
-            y: smooth ? useSpring(scrollYProgress.get() > 0.02 ? 0 : -50, { stiffness: 100, damping: 30 }) : (scrollYProgress.get() > 0.02 ? 0 : -50)
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: scrollPercentage > 1 ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
+        <div className="absolute top-4 right-4 bg-black bg-opacity-70 rounded-lg px-3 py-1 text-white text-sm flex items-center">
           {customIndicator || (
-            <div 
-              className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold"
-              style={{ backgroundColor: color, boxShadow: `0 0 10px ${color}` }}
-            >
-              {showPercentage && scrollPercentage}
-            </div>
+            <>
+              <div className="mr-2 w-2 h-2 rounded-full" style={{ backgroundColor: color }} />
+              <span>{scrollPercentage}%</span>
+            </>
           )}
-        </motion.div>
+        </div>
       )}
-    </>
+    </div>
   );
 }; 
