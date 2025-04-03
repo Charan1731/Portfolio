@@ -3,7 +3,6 @@ import { Spotlight } from './ui/spotlight'
 import { TextGenerateEffect } from './ui/text-generate-effect'
 import MagicButton from './ui/MagicButton'
 import { GrConnect } from "react-icons/gr"
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"
 import { FloatingAnimation } from './ui/floating-animation'
 import { TextScramble } from './ui/text-scramble'
 
@@ -56,24 +55,7 @@ const Hero = () => {
                               icon={<GrConnect className='hover:text-black-100'/>}
                           />
                       </a>
-                    </FloatingAnimation>
-                    <div className="flex gap-4 mt-4 sm:mt-2">
-                      <FloatingAnimation yOffset={3} duration={2.5} delay={0.1}>
-                        <a href="https://github.com/Charan1731" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                            <FaGithub size={24} />
-                        </a>
-                      </FloatingAnimation>
-                      <FloatingAnimation yOffset={3} duration={2.5} delay={0.2}>
-                        <a href="https://www.linkedin.com/in/charandeep-reddy-2640a4301/" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                            <FaLinkedin size={24} />
-                        </a>
-                      </FloatingAnimation>
-                      <FloatingAnimation yOffset={3} duration={2.5} delay={0.3}>
-                        <a href="https://x.com/CharanR18433412" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                            <FaTwitter size={24} />
-                        </a>
-                      </FloatingAnimation>
-                    </div>
+                    </FloatingAnimation>                    
                 </div>
             </div>
         </div>

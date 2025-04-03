@@ -5,14 +5,16 @@ import { FaLocationArrow } from 'react-icons/fa'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { TextScramble } from './ui/text-scramble'
-
+import { FloatingAnimation } from './ui/floating-animation'
 export default function RecentProjects() {
     return (
       <section id='projects' className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none"></div>
         <div className='py-20 relative z-10'>
           <div className="text-center mb-16">
-            <span className="px-4 py-1 bg-purple/10 rounded-full text-purple text-sm inline-block mb-4 backdrop-blur-sm border border-purple/20">PORTFOLIO</span>
+            <FloatingAnimation yOffset={3} duration={2}>
+              <span className="px-4 py-1 bg-purple/10 rounded-full text-purple text-sm inline-block mb-4 backdrop-blur-sm border border-purple/20">PORTFOLIO</span>
+            </FloatingAnimation>
             <h1 className='heading'>
               A selection of {' '}
               <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple to-blue-400'>

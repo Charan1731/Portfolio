@@ -5,7 +5,7 @@ const Fun = () => {
   return (
         <div className="flex items-center justify-center bg-[#010319] h-[20rem] rounded-2xl w-full mb-20">
             <TextRevealCard
-                text="I know evertthing Jon"
+                text="I know everything Jon"
                 revealText="You know nothing Snow "
             >
             <TextRevealCardTitle>
