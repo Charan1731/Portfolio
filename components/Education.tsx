@@ -1,6 +1,6 @@
 import { workExperience } from '@/data'
 import React from 'react'
-import { Button } from './ui/moving-border'
+import { ButtonDiv } from './ui/moving-border'
 import Image from 'next/image'
 
 const Education = () => {
@@ -16,7 +16,7 @@ const Education = () => {
         </div>
         <div className='w-full mt-16 grid lg:grid-cols-4 grid-cols-1 gap-10'>
           {workExperience.map((card) => (
-            <Button 
+            <ButtonDiv 
               key={card.id} 
               borderRadius='1.75rem' 
               className='flex-1 text-white border-neutral-200 dark:border-slate-800 hover-scale' 
@@ -40,7 +40,7 @@ const Education = () => {
                   </p>
                 </div>
               </div>
-            </Button>
+            </ButtonDiv>
           ))}
         </div>
     </div>

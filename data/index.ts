@@ -10,7 +10,7 @@ export const navItems = [
   export const gridItems = [
     {
       id: 1,
-      title: "I’m driven by a constant desire to learn, grow, and make a difference in the tech world.",
+      title: "I'm driven by a constant desire to learn, grow, and make a difference in the tech world.",
       description: "",
       className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
       imgClassName: "w-full h-full",
@@ -192,14 +192,14 @@ export const navItems = [
       id: 2,
       title: "CVR College of Engineering",
       desc: "Minor Degree in AIML",
-      className: "md:col-span-2", // change to md:col-span-2
+      className: "md:col-span-2", 
       thumbnail: "/cvr.png",
     },
     {
       id: 3,
       title: "Fiitjee Junior College",
       desc: "Intermediate",
-      className: "md:col-span-2", // change to md:col-span-2
+      className: "md:col-span-2", 
       thumbnail: "/fiitjee.png",
     },
     {
@@ -226,5 +226,72 @@ export const navItems = [
       id: 3,
       img: "/link.svg",
       url:"https://www.linkedin.com/in/charandeep-reddy-2640a4301/",
+    },
+  ];
+
+  export const technologies = [
+    {
+      name: "C",
+      icon: "/tech/c.png",
+    },
+    {
+      name: "Java",
+      icon: "/tech/java.png",
+    },
+    {
+      name: "Python",
+      icon: "/tech/python.png",
+    },
+    {
+      name: "TypeScript",
+      icon: "/tech/typescript.png",
+    },
+    {
+      name: "JavaScript",
+      icon: "/tech/javascript.png",
+    },
+    {
+      name: "Solidity",
+      icon: "/tech/solidity.png",
+    },
+    {
+      name: "HTML",
+      icon: "/tech/html.png",
+    },
+    {
+      name: "CSS",
+      icon: "/tech/css.png",
+    },
+    {
+      name: "React",
+      icon: "/tech/reactjs.png",
+    },
+    {
+      name: "Node",
+      icon: "/tech/nodejs.png",
+    },
+    {
+      name: "Tailwind",
+      icon: "/tech/tailwind.png",
+    },
+    {
+      name: "Git",
+      icon: "/tech/git.png",
+    },
+    {
+      name: "Docker",
+      icon: "/tech/docker.png",
+    },
+    {
+      name: "Kubernetes",
+      icon: "/tech/kubernetes.png",
+    },
+    {
+      name: "Firebase",
+      icon: "/tech/firebase.png",
+    },
+    {
+      name: "MongoDB",
+      icon: "/tech/mongodb.png",
     },
   ];

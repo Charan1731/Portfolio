@@ -4,13 +4,12 @@ import { IconBook, IconBrandGithub, IconBrandHackerrank, IconBrandInstagram, Ico
 import Grid from "@/components/Grid";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingDock } from "@/components/ui/floating-dock";
-import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Achievements from "@/components/Achievements";
 import Fun from "@/components/Fun";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import SkillsWithLevels from "@/components/SkillsWithLevels";
+import Tech from "@/components/Tech";
 
 export default function Home() {
   return (
@@ -86,8 +85,7 @@ export default function Home() {
         <Grid/>
         <RecentProjects/>
         <Achievements/>
-        <Skills/>
-        <SkillsWithLevels/>
+        <Tech />
         <Education/>
         <Fun/>
         <Footer/>
