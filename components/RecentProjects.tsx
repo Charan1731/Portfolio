@@ -23,7 +23,7 @@ export default function RecentProjects() {
             </h1>
             <p className="max-w-2xl mx-auto mt-4 text-gray-400">Showcasing my latest work and development projects built with modern technologies</p>
           </div>
-          <div className='flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-12 mt-10'>
+          <div className='flex flex-wrap items-center justify-center p-4 gap-x-16 mt-10'>
             {projects.map(({ id, title, des, img, iconLists, link }, index) => (
               <motion.div 
                 key={id} 
@@ -49,22 +49,22 @@ export default function RecentProjects() {
                         className='object-cover object-center'
                       />
                     </div>
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10 w-[80%] flex justify-center">
+                    {/* <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10 w-[80%] flex justify-center">
                       <motion.div
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.3 }}
                         className="w-full"
-                      >
+                      > */}
                         <Image 
                           src={img} 
                           alt={title}
                           width={500}
                           height={300}
                           priority
-                          className="object-contain max-h-[35vh]"
+                          className="object-cover w-full h-full"
                         />
-                      </motion.div>
-                    </div>
+                      {/* </motion.div>
+                    </div> */}
                   </div>
                   <h1 className='font-bold lg:text-2xl md:text-xl line-clamp-1 text-base'>
                     {title}

@@ -1,4 +1,4 @@
-import { title } from "process";
+
 
 export const navItems = [
     { name: "About", link: "#about" },
@@ -74,11 +74,11 @@ export const navItems = [
   export const projects = [
     {
       id: 1,
-      title: "Web 3.0 based Blog Website",
-      des: "Explore the future of blogging with my decentralized Web 3.0 platform, built using React, TypeScript",
-      img: "/project1.png",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg"],
-      link: "https://blippi-frontend.vercel.app/",
+      title: "Mocksy",
+      des: "An AI powered mock interview platform with comprehensive feedback based on your interview.",
+      img: "/mocksy.png",
+      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/gsap.svg"],
+      link: "https://mocksy-interview.vercel.app/",
     },
     {
       id: 2,
@@ -103,6 +103,14 @@ export const navItems = [
       img: "/project4.png",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/gsap.svg"],
       link: "https://aeon-ui.vercel.app/",
+    },
+    {
+      id: 5,
+      title: "Web 3.0 based Blog Website",
+      des: "Explore the future of blogging with my decentralized Web 3.0 platform, built using React, TypeScript",
+      img: "/project1.png",
+      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg"],
+      link: "https://blippi-frontend.vercel.app/",
     },
   ];
   
