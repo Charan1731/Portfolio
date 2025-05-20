@@ -49,7 +49,7 @@ export default function Home() {
       icon: (
         <IconBrandHackerrank className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "#skills",
+      href: "#tech",
     },
     {
       title:"Education",

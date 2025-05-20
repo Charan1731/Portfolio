@@ -113,7 +113,7 @@ const Skills = () => {
       },
     ];
   return (
-    <div className='section-padding relative' id='skills'>
+    <div className='section-padding relative' id='skill'>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 pointer-events-none"></div>
         <div className="text-center mb-16 relative z-10">
             <span className="section-title-badge">EXPERTISE</span>
