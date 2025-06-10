@@ -44,7 +44,7 @@ const Hero = () => {
                     words='Crafting Innovative Solutions, One Line of Code at a Time.'
                 />
                 <p className='text-center md:tracking-wider mb-6 text-small md:text-large lg:text-xl mt-4 text-gray-300 max-w-2xl'>
-                    Hi, I&apos;m Charan, a CS major student at CVR College of Engineering passionate about building beautiful and functional web experiences.
+                    Hi, I&apos;m <span className='text-purple text-2xl font-bold'>Charan</span>, a CS major student at CVR College of Engineering passionate about building beautiful and functional web experiences.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 items-center">
                     <FloatingAnimation yOffset={3} duration={2}>
