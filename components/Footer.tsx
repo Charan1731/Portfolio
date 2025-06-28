@@ -34,6 +34,7 @@ const Footer = () => {
          <div className='flex mt-20 md:flex-row flex-col justify-between items-center border-t border-white/10 pt-8'>
             <p className='md:text-base text-sm md:font-normal font-light text-gray-400'>Copyright © {currentYear} Charan. All rights reserved.</p>
             <div className='flex items-center md:gap-4 gap-6 mt-6 md:mt-0'>
+                <a href="/resume.pdf" download className="text-gray-400 hover:text-purple-400 transition-colors duration-300">Download Resume</a>
                 {socialMedia.map((profile) => (
                     <div 
                         key={profile.id} 

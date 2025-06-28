@@ -3,10 +3,11 @@ import { Spotlight } from './ui/spotlight';
 import { TextGenerateEffect } from './ui/text-generate-effect';
 import MagicButton from './ui/MagicButton';
 import { GrConnect } from 'react-icons/gr';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaDownload, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { FloatingAnimation } from './ui/floating-animation';
 import { TextScramble } from './ui/text-scramble';
 import { TiltEffect } from './ui/tilt-effect';
+import Image from 'next/image';
 
 const Hero = () => {
   return (
@@ -65,6 +66,20 @@ const Hero = () => {
                   />
                 </a>
               </FloatingAnimation>
+              <FloatingAnimation yOffset={3} duration={2}>
+                <a
+                  href="/latest.pdf"
+                  download={true}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <MagicButton
+                    title="Download Resume"
+                    otherClasses="mt-2"
+                    icon={<FaDownload className="hover:text-black-100" />}
+                  />
+                </a>
+              </FloatingAnimation>
             </div>
             <div className="flex gap-4 mt-6">
               <a
@@ -102,7 +117,7 @@ const Hero = () => {
               shadow={true}
               shadowColor="rgba(167, 139, 250, 0.4)"
             >
-              <img
+              <Image
                 src="/charan.jpeg"
                 alt="Profile"
                 className="rounded-full w-64 h-64 object-cover border-4 border-purple"
