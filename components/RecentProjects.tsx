@@ -4,7 +4,6 @@ import { PinContainer } from './ui/3d-pin'
 import { FaLocationArrow } from 'react-icons/fa'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { TextScramble } from './ui/text-scramble'
 import { FloatingAnimation } from './ui/floating-animation'
 import { ComicText } from './magicui/comic-text'
 export default function RecentProjects() {
@@ -16,12 +15,13 @@ export default function RecentProjects() {
             <FloatingAnimation yOffset={3} duration={2}>
               <span className="px-4 py-1 bg-purple/10 rounded-full text-purple text-sm inline-block mb-4 backdrop-blur-sm border border-purple/20">PORTFOLIO</span>
             </FloatingAnimation>
-            <h1 className='heading'>
+            {/* <h1 className='heading'>
               A selection of {' '}
               <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple to-blue-400'>
                 <TextScramble text="recent projects" scrambleOnMount={true} />
               </span>
-            </h1>
+            </h1> */}
+            <ComicText fontSize={5}>Recent Projects</ComicText>
             <p className="max-w-2xl mx-auto mt-4 text-gray-400">Showcasing my latest work and development projects built with modern technologies</p>
           </div>
           <div className='flex flex-wrap items-center justify-center p-4 gap-x-16 mt-10'>

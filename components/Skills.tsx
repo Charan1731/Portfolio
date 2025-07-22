@@ -1,5 +1,6 @@
 import React from 'react'
 import { AnimatedTooltip } from './ui/animated-tooltip';
+import { ComicText } from './magicui/comic-text';
 
 const Skills = () => {
     const languages = [
@@ -117,11 +118,7 @@ const Skills = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 pointer-events-none"></div>
         <div className="text-center mb-16 relative z-10">
             <span className="section-title-badge">EXPERTISE</span>
-            <h1 className='heading'>
-                Technical {' '}
-                <span className='gradient-text'>Skills</span>
-            </h1>
-            <p className="max-w-2xl mx-auto mt-4 text-gray-400">Technologies and programming languages I work with</p>
+            <ComicText fontSize={5}>Skills</ComicText>
         </div>
         <div className='flex flex-row flex-wrap justify-center gap-24 mt-16 relative z-10'>
             <AnimatedTooltip items={languages} />

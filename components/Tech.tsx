@@ -3,6 +3,7 @@ import { BallCanvas } from "@/components/canvas";
 import { SectionWrapper } from "@/components/hoc";
 import { technologies } from "@/data";
 import { FloatingAnimation } from "./ui/floating-animation";
+import { ComicText } from "./magicui/comic-text";
 
 const Tech = () => {
   return (
@@ -11,10 +12,7 @@ const Tech = () => {
         <FloatingAnimation yOffset={3} duration={2}>
         <span className="section-title-badge">EXPERTISE</span>
         </FloatingAnimation>
-        <h2 className='heading'>
-          Technical {' '}
-          <span className='gradient-text'>Skills</span>
-        </h2>
+        <ComicText fontSize={5}>Skills</ComicText>
       </div>
       <div className='flex flex-row flex-wrap justify-center gap-10'>
         {technologies.map((technology) => (
