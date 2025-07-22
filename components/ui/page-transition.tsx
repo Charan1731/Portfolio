@@ -312,7 +312,7 @@ export const PageTransition = ({
         initial="initial"
         animate="animate"
         exit="exit"
-        variants={getVariants()}
+        variants={getVariants() as Variants}
         className={cn("w-full", className)}
         onAnimationComplete={handleAnimationComplete}
       >
