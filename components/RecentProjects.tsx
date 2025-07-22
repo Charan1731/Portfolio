@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { TextScramble } from './ui/text-scramble'
 import { FloatingAnimation } from './ui/floating-animation'
+import { ComicText } from './magicui/comic-text'
 export default function RecentProjects() {
     return (
       <section id='projects' className="relative overflow-hidden">
@@ -66,9 +67,9 @@ export default function RecentProjects() {
                       {/* </motion.div>
                     </div> */}
                   </div>
-                  <h1 className='font-bold lg:text-2xl md:text-xl line-clamp-1 text-base'>
+                  <ComicText className='lg:text-2xl md:text-xl line-clamp-1 text-base'>
                     {title}
-                  </h1>
+                  </ComicText>
                   <p className='lg:text-xl lg:font-normal font-light text-sm line-clamp-2 text-gray-300 mt-2'>
                     {des}
                   </p>

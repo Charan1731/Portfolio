@@ -12,7 +12,7 @@ interface TiltEffectProps {
   rotateXMax?: number;
   rotateYMax?: number;
   transitionDuration?: number;
-  transitionEasing?: string;
+  transitionEasing?: [number, number, number, number];
   glareEffect?: boolean;
   glarePositionOption?: string;
   glareColor?: string;
@@ -31,7 +31,7 @@ export const TiltEffect = ({
   rotateXMax = 15,
   rotateYMax = 15,
   transitionDuration = 0.2,
-  transitionEasing = "cubic-bezier(.17,.67,.83,.67)",
+  transitionEasing = [0.17, 0.67, 0.83, 0.67],
   glareEffect = false,
   glarePositionOption = "all",
   glareColor = "rgba(255, 255, 255, 0.8)",

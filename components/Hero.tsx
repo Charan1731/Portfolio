@@ -8,6 +8,7 @@ import { FloatingAnimation } from './ui/floating-animation';
 import { TextScramble } from './ui/text-scramble';
 import { TiltEffect } from './ui/tilt-effect';
 import Image from 'next/image';
+import { ComicText } from './magicui/comic-text';
 
 const Hero = () => {
   return (
@@ -29,7 +30,7 @@ const Hero = () => {
       <div className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.05] bg-grid-black/[0.2] flex items-center justify-center absolute top-0 left-0 z-0">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
-      <div className="flex justify-center relative my-20 z-30">
+      <div className="flex justify-center relative my-20 z-30 -mt-1 ">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[80vw] flex flex-col lg:flex-row items-center justify-between">
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:w-1/2">
             <FloatingAnimation yOffset={5} duration={3} delay={0.5}>
@@ -48,7 +49,8 @@ const Hero = () => {
             />
             <p className="md:tracking-wider mb-6 text-small md:text-large lg:text-xl mt-4 text-gray-300 max-w-2xl">
               Hi, I&apos;m{' '}
-              <span className="text-purple text-2xl font-bold">Charan</span>, a
+              {/* <span className="text-purple text-2xl font-bold">Charan</span>, a */}
+              <ComicText fontSize={1.8}>Charan</ComicText>, a
               CS major student at CVR College of Engineering passionate about
               building beautiful and functional web experiences.
             </p>
@@ -118,6 +120,8 @@ const Hero = () => {
               shadowColor="rgba(167, 139, 250, 0.4)"
             >
               <Image
+                width={256}
+                height={256}
                 src="/charan.jpeg"
                 alt="Profile"
                 className="rounded-full w-64 h-64 object-cover border-4 border-purple"
