@@ -3,6 +3,8 @@ import { InfiniteMovingCards } from './ui/infinite-moving-cards'
 import { companies, testimonials } from '@/data'
 import Image from 'next/image';
 import { ComicText } from './magicui/comic-text';
+import Link from 'next/link';
+import { LinkPreview } from './ui/link-preview';
 
 const Achievements = () => {
   return (
@@ -25,9 +27,11 @@ const Achievements = () => {
                     speed='fast'
                 />
             <div className='flex flex-wrap items-center justify-center gap-4 md:gap-16 mt-10'>
-                {companies.map(({id,name,nameImg}) => (
+                {companies.map(({id,name,nameImg,url}) => (
                     <div key={id} className='flex md:max-w-60 max-w-32 gap-2'>
+                      <LinkPreview url={url}>
                         <Image src={nameImg} alt={name} className='md:w-38 w-40' width={50} height={50} />
+                      </LinkPreview>
                     </div>
                 ))}
             </div>
