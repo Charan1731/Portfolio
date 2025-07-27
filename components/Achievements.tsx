@@ -3,7 +3,6 @@ import { InfiniteMovingCards } from './ui/infinite-moving-cards'
 import { companies, testimonials } from '@/data'
 import Image from 'next/image';
 import { ComicText } from './magicui/comic-text';
-import Link from 'next/link';
 import { LinkPreview } from './ui/link-preview';
 
 const Achievements = () => {
