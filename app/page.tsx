@@ -1,6 +1,6 @@
 "use client";
 import Hero from "@/components/Hero";
-import { IconBook, IconBrandGithub, IconBrandHackerrank, IconBrandInstagram, IconBrandVite, IconBrandX, IconCertificate2, IconHome, IconTerminal2 } from "@tabler/icons-react";
+import { IconBook, IconBrandGithub, IconBrandHackerrank, IconBrandLeetcode, IconBrandVite, IconBrandX, IconCertificate2, IconHome, IconTerminal2 } from "@tabler/icons-react";
 import Grid from "@/components/Grid";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingDock } from "@/components/ui/floating-dock";
@@ -67,20 +67,20 @@ export default function Home() {
       href: "https://x.com/CharanR18433412",
     },
     {
-      title:"Instagram",
-      icon: (
-        <IconBrandInstagram className="w-full h-full text-neutral-500 dark:text-neutral-300"/>
-      ),
-      href: "https://www.instagram.com/__.charan.__1731"
-    },
-    {
       title: "GitHub",
       icon: (
         <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "https://github.com/Charan1731",
       target:'_blank'
-    },]}/>
+    },
+    {
+      title: "Leetcode",
+      icon: (
+        <IconBrandLeetcode className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "https://leetcode.com/u/Charan_1731",
+    }]}/>
         <Hero/>
         <Grid/>
         <RecentProjects/>
