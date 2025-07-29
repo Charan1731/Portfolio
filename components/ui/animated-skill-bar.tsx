@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 interface AnimatedSkillBarProps {
   name: string;
-  level: number; // 0-100
+  level: number;
   image: string;
   color?: string;
   className?: string;
