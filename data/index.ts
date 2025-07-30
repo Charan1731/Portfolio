@@ -76,7 +76,7 @@ export const navItems = [
       id: 1,
       title: "Mocksy",
       des: "An AI powered mock interview platform with comprehensive feedback based on your interview.",
-      img: "/mocksy.png",
+      img: "/mocksy-new.png",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/gsap.svg"],
       link: "https://mocksy-interview.vercel.app/",
     },
