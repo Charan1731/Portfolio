@@ -122,6 +122,14 @@ export const navItems = [
     },
     {
       id: 7,
+      title: "SolSplash",
+      des: "A solana web based faucet, where user can make solana transactions, view their transaction history and verify their ownership",
+      img: "/solsplash.png",
+      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
+      link: "https://solsplash.vercel.app/",
+    },
+    {
+      id: 8,
       title: "BudgetBox",
       des: "A budget management app that allows you to manage your Subscriptions budget and expenses.",
       img: "/project3.png",
