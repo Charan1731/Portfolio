@@ -106,6 +106,14 @@ export const navItems = [
     },
     {
       id: 5,
+      title: "Printease",
+      des: "An AI powered print-on-demand platform that allows you to print your designs on various materials.",
+      img: "/printease.png",
+      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/gsap.svg"],
+      link: "https://printease.vercel.app/",
+    },
+    {
+      id: 6,
       title: "Aeon-UI",
       des: "An AI powered modern and responsive UI component library for your projects.",
       img: "/project4.png",
@@ -113,7 +121,7 @@ export const navItems = [
       link: "https://aeon-ui.vercel.app/",
     },
     {
-      id: 6,
+      id: 7,
       title: "NexVault",
       des: "A decentralized crypto wallet that allows you to store your crypto key pairs securely.",
       img: "/nexvault.png",
@@ -121,7 +129,7 @@ export const navItems = [
       link: "https://nexvault-iota.vercel.app/",
     },
     {
-      id: 7,
+      id: 8,
       title: "SolSplash",
       des: "A solana web based faucet, where user can make solana transactions, view their transaction history and verify their ownership",
       img: "/solsplash.png",
@@ -129,7 +137,7 @@ export const navItems = [
       link: "https://solsplash.vercel.app/",
     },
     {
-      id: 8,
+      id: 9,
       title: "BudgetBox",
       des: "A budget management app that allows you to manage your Subscriptions budget and expenses.",
       img: "/project3.png",
