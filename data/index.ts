@@ -110,7 +110,7 @@ export const navItems = [
       des: "An AI powered print-on-demand platform that allows you to print your designs on various materials.",
       img: "/printease.png",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/gsap.svg"],
-      link: "https://printease.vercel.app/",
+      link: "https://printease.yashwanth.site/",
     },
     {
       id: 6,
