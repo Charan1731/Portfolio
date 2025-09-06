@@ -10,6 +10,7 @@ import Fun from "@/components/Fun";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import Tech from "@/components/Tech";
+import SplineScene from "@/components/SplineScene";
 
 export default function Home() {
   return (
@@ -90,6 +91,7 @@ export default function Home() {
         <Fun/>
         <Footer/>
         <ScrollToTop />
+        <SplineScene />
       </div>
     </main>
   );
