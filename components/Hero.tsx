@@ -6,9 +6,9 @@ import { GrConnect } from 'react-icons/gr';
 import { FaDownload, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { FloatingAnimation } from './ui/floating-animation';
 import { TextScramble } from './ui/text-scramble';
-import { TiltEffect } from './ui/tilt-effect';
 import Image from 'next/image';
 import { ComicText } from './magicui/comic-text';
+import { CometCard } from './ui/comet-card';
 
 const Hero = () => {
   return (
@@ -45,11 +45,10 @@ const Hero = () => {
             </FloatingAnimation>
             <TextGenerateEffect
               className="text-center lg:text-left text-[40px] md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-purple to-blue-400"
-              words="Crafting Innovative Solutions, One Line of Code at a Time."
+              words="Turning Complex Ideas into Beautiful, Functional Code."
             />
             <p className="md:tracking-wider mb-6 text-small md:text-large lg:text-xl mt-4 text-gray-300 max-w-2xl">
               Hi, I&apos;m{' '}
-              {/* <span className="text-purple text-2xl font-bold">Charan</span>, a */}
               <ComicText fontSize={1.8}>Charan</ComicText>, a
               CS major student at CVR College of Engineering passionate about
               building beautiful and functional web experiences.
@@ -111,7 +110,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="lg:w-1/2 flex justify-center mt-10 lg:mt-0">
-            <TiltEffect
+            {/* <TiltEffect
               glareEffect={true}
               glareColor="#A78BFA"
               glareOpacity={0.3}
@@ -126,7 +125,38 @@ const Hero = () => {
                 alt="Profile"
                 className="rounded-full w-64 h-64 object-cover border-4 border-purple"
               />
-            </TiltEffect>
+            </TiltEffect> */}
+             <CometCard>
+      <div
+        className="my-10 flex w-80 cursor-pointer flex-col items-stretch rounded-[16px] border border-purple/20 bg-gradient-to-br from-black-100 via-black-200 to-purple/10 p-2 backdrop-blur-sm md:my-20 md:p-4 hover:border-purple/40 transition-all duration-300"
+        style={{
+          transformStyle: "preserve-3d",
+          transform: "none",
+          opacity: 1,
+        }}
+      >
+        <div className="mx-2 flex-1">
+          <div className="relative mt-2 aspect-[3/4] w-full">
+            <Image
+              width={256}
+              height={256}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full rounded-[16px] object-cover border border-purple/30 shadow-lg shadow-purple/20"
+              alt="Profile"
+              src="/charan.jpeg"
+              style={{
+                opacity: 1,
+              }}
+            />
+            <div className="absolute inset-0 rounded-[16px] bg-gradient-to-t from-purple/20 via-transparent to-transparent" />
+          </div>
+        </div>
+        <div className="mt-2 flex flex-shrink-0 items-center justify-between p-4 font-mono text-white">
+          <div className="text-sm font-medium bg-gradient-to-r from-white to-purple bg-clip-text text-transparent">My Profile</div>
+          <div className="text-xs text-purple/70 font-medium">#Charandeep</div>
+        </div>
+      </div>
+    </CometCard>
           </div>
         </div>
       </div>

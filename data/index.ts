@@ -108,7 +108,7 @@ export const navItems = [
       id: 5,
       title: "Printease",
       des: "An AI powered print-on-demand platform that allows you to print your designs on various materials.",
-      img: "/printease.png",
+      img: "/new_print.png",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/gsap.svg"],
       link: "https://printease.yashwanth.site/",
     },
@@ -116,7 +116,7 @@ export const navItems = [
       id: 6,
       title: "Aeon-UI",
       des: "An AI powered modern and responsive UI component library for your projects.",
-      img: "/project4.png",
+      img: "/new_aeon.png",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/gsap.svg"],
       link: "https://aeon-ui.vercel.app/",
     },
@@ -275,10 +275,6 @@ export const navItems = [
   ];
 
   export const technologies = [
-    {
-      name: "C",
-      icon: "/tech/c.png",
-    },
     {
       name: "Java",
       icon: "/tech/java.png",
